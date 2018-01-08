@@ -1,0 +1,12 @@
+<div class="post">
+  <h3>以下の内容で投稿しても良いですか？</h3>
+</div>
+  
+<%= render "confirm" %>
+
+<%= form_with(model: @post, local: true, url: edit_post_path(@post.id), method: :get) do |f| %>  
+  <%= f.hidden_field :content %>
+  <ul>
+    <li class="right"><%= f.submit :"もどる", name: "back", id: "btn" %></li>
+  </ul>
+<% end %>

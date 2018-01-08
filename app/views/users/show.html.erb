@@ -1,0 +1,36 @@
+<div class="post">
+  <h3>プロフィール</h3>
+  <p>
+    <% if @user.id == @current_user.id %>
+        <%= link_to "→編集", edit_user_path(@user.id) %>
+    <% end %>
+  </p>
+
+  <div class="center">
+    <div class="box profile">
+      <ul>
+        <li class="profile-label">お名前</li>
+        <li class="profile-content"><%= @user.name %></li>
+          <li class="profile-label">自己紹介</li>
+        <% if @user.description.blank? %>
+          <li class="profile-content">まだ自己紹介がありません。</li>
+        <% else %>
+          <li class="profile-content"><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></li> 
+        <% end %>
+        <li class="profile-label path"><p><%= link_to "→お気に入り作品へ", user_likes_path(@user.id) %></p></li>
+      </ul>
+    </div>
+  </div>
+  
+  <h3>投稿作品</h3>
+  <div class="center">
+    <ul class="profile">
+      <% @user.posts.limit(5).reverse_order.each do |post| %>
+        <div class="box post-content bottom-margin">
+          <li><h2><%= link_to post.content, post_path(post.id) %></h2></li>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</div>

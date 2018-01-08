@@ -1,0 +1,30 @@
+<%= form_with(model: @user, local: true) do |f| %>  
+    <div class="box">
+      <ul>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :password %>
+        <%= f.hidden_field :password_confirmation %>
+        <%= f.hidden_field :description %>
+        
+        <li class="profile-label">お名前</li>
+        <li><%= @user.name %></li>
+      
+        <li class="profile-label">Email</li>
+        <li><%= @user.email %></li>
+      
+        <li class="profile-label">パスワード</li>
+        <li><%= "*" * @user.password.size %></li>
+      
+        <li class="profile-label">パスワード(確認)</li>
+        <li><%= "*" * @user.password_confirmation.size %></li>
+      <% if logged_in? %>        
+        <li class="profile-label">自己紹介</li>
+        <li><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></li>
+      <% end %>
+     </ul>
+    </div>
+    <ul>
+      <li class="right"><%= f.submit "登録する", id:"btn" %></li>
+    </ul>
+<% end %>

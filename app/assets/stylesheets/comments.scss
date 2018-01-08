@@ -1,0 +1,42 @@
+.mini-box{
+  border: 1px solid black;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding: 30px;
+  word-break: break-all;
+  background-color: #d4dcd6;
+  letter-spacing: 3px;
+}
+
+.mini-box .path{
+  text-shadow: 1px 1px 0 #fff,
+              -1px 1px 0 #fff,
+              1px -1px 0 #fff,
+              -1px -1px 0 #fff;
+  font-weight: bold;
+  margin: 0px 0px 25px 5px;
+}
+
+.path a:hover{
+ text-decoration: none;
+}
+
+.mini-box h5{
+  margin: 5px;
+  margin-top: 10px;
+  font-size: 15px;  
+}
+
+.comment-info p, .comment-edit-menu{
+  margin: 5px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.comment-edit-menu p{
+  margin-right: 2%;
+}
+
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/

@@ -1,0 +1,15 @@
+<div class="post">
+  <h3>以下の内容で登録しても良いですか？</h3>
+  
+  <%= render "confirm" %>
+  
+  <%= form_with(model: @user, local: true, url: new_user_path, method: :get) do |f| %>  
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :password %>
+    <%= f.hidden_field :password_digest %>
+    <ul>
+      <li class="right bottom-margin"><%= f.submit :"もどる", name: "back", id: "btn" %></li>
+    </ul>
+  <% end %>
+</div>

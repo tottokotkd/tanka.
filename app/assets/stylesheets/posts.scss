@@ -1,0 +1,108 @@
+// Error共通設定
+.error_messages{
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin: 25px 2%;
+  padding: 30px;
+  word-break: break-all;
+  background-color: #d4dcd6;
+  letter-spacing: 3px;
+  box-shadow: 0 0 0 3px #d4dcd6;
+}
+
+
+// post共通設定
+
+.box{
+  border: 1px solid black;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding: 30px;
+  word-break: break-all;
+  background-color: #d4dcd6;
+  letter-spacing: 3px;
+  box-shadow: 0 0 0 3px #d4dcd6;
+}
+
+.post-content h2{
+  margin: 1%;
+  padding-bottom: 5px;
+  font-size: 25px;
+  text-shadow: 1.5px 1.5px 0 #fff,
+               -1.5px 1.5px 0 #fff,
+               1.5px -1.5px 0 #fff,
+               -1.5px -1.5px 0 #fff;
+}
+
+.post-content a:hover{
+ text-decoration: none;
+}
+
+// 詳細画面
+.post-info p, .edit-menu{
+ font-size: 15px;
+ text-align: right;
+}
+
+.edit-menu p{
+  margin-right: 2.5%;
+}
+
+.like-btn{
+ color: #ee827c;
+}
+
+.like-btn-unlike{
+ color: #165e83;
+}
+
+.white-shadow p, .post p{
+  text-shadow: 1px 1px 0 white,
+               -1px 1px 0 white,
+               1px -1px 0 white,
+               -1px -1px 0 white;
+  font-weight: bold;
+  margin-bottom: 25px;
+  margin-left: 3%;
+}
+
+.like_users ul li{
+ margin-bottom: 10px;
+}
+
+// 投稿画面
+
+.post{
+ margin-top: 10px;
+}
+
+.post h3{
+ font-weight: bold;
+ color: #eaedf7;
+ text-shadow: 1px 1px 0 #000,
+             -1px 1px 0 #000,
+             1px -1px 0 #000,
+             -1px -1px 0 #000;
+ margin: 1.5%;
+}
+
+.post p{
+ margin-bottom: 15px;
+}
+
+.post textarea{
+ width: 100%;
+}
+
+.confirm-content p{
+ font-size: 25px;
+ font-weight: normal;
+ text-shadow: 1.5px 1.5px 0 white,
+              -1.5px 1.5px 0 white,
+              1.5px -1.5px 0 white,
+              -1.5px -1.5px 0 white;
+}
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/

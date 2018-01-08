@@ -1,0 +1,48 @@
+<%= form_with(model: @user, local: true, url: users_new_or_edit_confirm_path, method: post_or_patch) do |f| %>  
+  <% if @user.errors.any? %>
+    <div class="center">
+      <dl class="error_messages">
+        <dt><%= @user.errors.count %>件のエラーがあります</dt>
+        <dd>
+          <% @user.errors.full_messages.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        </dd>
+      </dl>
+    </div>
+  <% end %>
+
+  <div class="profile-item">
+    <ul>
+      <li class="center">
+        <%= f.label :"お名前" %>
+        <%= f.text_field :name %>
+      </li>
+  
+      <li class="center">
+        <%= f.label :"Email" %>
+        <%= f.email_field :email %>
+      </li>
+    
+      <li class="center">
+        <%= f.label :"パスワード", class:"password" %>
+        <%= f.password_field :password %>
+      </li>
+    
+      <li class="center">
+        <%= f.label :"パスワード(確認)" %>
+        <%= f.password_field :password_confirmation %>
+      </li>
+  
+      <% if logged_in? %>
+        <li class="profile-desc"><%= f.label :"自己紹介" %></li>
+        <li class="center"><%= f.text_area :description %>
+        </li>
+      <% end %>
+      
+      <li class="center bottom-margin"><%= f.submit "確認", id: "btn" %></li>
+    </ul>
+
+<% end %>

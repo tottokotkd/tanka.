@@ -1,0 +1,53 @@
+<div class="box">
+  <div class="post-content">
+    <h2><%= simple_format(@post.content) %></h2>
+    </div>
+
+    <div class="post-info">
+      <p>
+        <%= link_to @post.user.name, user_path(@post.user.id) %> | 
+        <%= simple_time(@post.created_at) %>
+        <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+          <%= link_to "/likes/#{@post.id}/destroy", method: :delete do %>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        <% else %>
+          <%= link_to "/likes/#{@post.id}/create", method: :post do %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+          <% end %>
+        <% end %>
+        <%= @likes_count if @likes_count > 0 %>
+      </p>
+    </div>
+
+    <% if @post.user.id == @current_user.id %>
+      <div class="edit-menu">
+        <p>
+          <%= link_to "編集", edit_post_path(@post.id) %> | 
+          <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+        </p>
+      </div>
+    <% end %>
+</div>
+
+<div class="mini-box col-md-6 bottom-margin">
+  <%= render template:"comments/index" %>
+</div>
+
+<div class="mini-box white-shadow col-md-offset-1 col-md-5">
+  <p>いいね!したユーザー</p>
+    <% if @post.like_users.count > 0 %>
+      <% @post.like_users.each do |like_user| %>
+        <ul>
+          <li>
+            <b><%= link_to like_user.name, user_path(like_user.id) %></b><br>
+            <% unless like_user.description.blank? %>
+              <%= like_user.description.truncate(30) %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% else %>
+      まだいいね！はありません。
+    <% end %>
+</div>

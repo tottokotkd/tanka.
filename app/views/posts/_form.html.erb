@@ -1,0 +1,22 @@
+<%= form_with(model: @post, local: true, url: posts_new_or_edit_confirm_path, method: post_or_patch) do |f| %>  
+  <% if @post.errors.any? %>
+    <div class="center">
+      <dl class="error_messages">
+        <dt><%= @post.errors.count %>件のエラーがあります</dt>
+        <dd>
+          <% @post.errors.full_messages.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        </dd>
+      </dl>
+    </div>
+  <% end %>
+
+  <ul class="post">
+    <li class="form"><%= f.text_area :content %></li>
+    <li class="right"><%= f.submit "確認する", id: 'btn' %></li>
+  </ul>
+
+<% end %>

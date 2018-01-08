@@ -1,0 +1,14 @@
+<% @posts.each do |post| %>
+  <div class="box">
+    <div class="post-content">
+      <h2><%= link_to simple_format(post.content), post_path(post.id) %></h2>
+    </div>
+
+    <div class="post-info">
+      <p>
+        <%= link_to post.user.name, user_path(post.user.id) %> | 
+        <%= simple_time(post.created_at) %>
+      </p>
+    </div>
+  </div>
+<% end %>

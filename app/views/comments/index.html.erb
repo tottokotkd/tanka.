@@ -1,0 +1,25 @@
+<p class="path">
+  <%= link_to "→感想を書く", new_post_comment_path(@post.id) %>
+</p>
+
+<% if @comments.count > 0 %>
+  <% @comments.each do |comment| %>
+    <h5><%= comment.content %></h5>
+    <div class="comment-info">
+      <p>
+        <%= link_to comment.user.name, user_path(comment.user.id) %> | 
+        <%= simple_time(comment.created_at) %>
+      </p>
+    </div>
+    <% if comment.user_id == @current_user.id %>
+      <div class="comment-edit-menu">
+        <p>
+          <%= link_to "編集", edit_post_comment_path(@post.id, comment.id) %> | 
+          <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete, data:{confirm: "本当に削除してもいいですか？"} %> 
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  まだ感想はありません。<br>最初の感想を書いてみませんか？
+<% end %>

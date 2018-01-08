@@ -1,0 +1,24 @@
+<div class="top-page">
+  <% unless @user.errors.any? %>
+    <div class="top-disc">
+      <p>
+        Tanka is a classical Japanese poetry form<br> 
+        consisted of five units usually with the following pattern of on 5-7-5-7-7.
+      </p>
+      <h1>５・７・５・７・７の文学の世界へ。</h1>
+      
+      <p>
+        短歌は、日本の誇る伝統的な短詩です。<br>
+        古くから日本人は、日々の出来事、喜びや悲しみ、風景や自然を、<br>
+        ５・７・５・７・７のわずか３１文字に託してきました。
+      </p>
+      <h4 class="bottom-margin">Tanka.は、あなたの短歌作品を自由に投稿できる新しいSNSです。</h4>
+    </div>
+    <h3 class="center bottom-margin">Tanka.をはじめる</h3>
+  <% end %>
+  
+    
+  <ul>
+    <li><%= render "form" %></li>
+  </ul>
+</div>

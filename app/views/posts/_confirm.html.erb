@@ -1,0 +1,11 @@
+<%= form_with(model: @post, local: true) do |f| %>  
+  <%= f.hidden_field :content %>      
+  <div class="box">
+    <div class="post-content">
+     <h2><%= simple_format(@post.content) %></h2>
+    </div>
+  </div>
+  <ul>
+    <li class="right"><%= f.submit "投稿する", id: "btn" %></li>
+  <ul>
+<% end %>
