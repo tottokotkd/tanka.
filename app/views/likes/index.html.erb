@@ -6,7 +6,7 @@
   <% post = Post.find_by(id: like.post_id) %>
     <div class="box">
       <div class="post-content">
-        <h2><%= link_to simple_format(post.content), post_path(post.id) %></h2>
+        <h2><%= link_to post.content, post_path(post.id) %></h2>
       </div>
   
       <div class="post-info">
