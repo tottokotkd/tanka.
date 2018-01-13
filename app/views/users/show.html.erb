@@ -24,7 +24,7 @@
   
   <h3>投稿作品</h3>
   <div class="center">
-    <ul class="profile">
+    <ul class="profile col-md-12">
       <% @user.posts.limit(5).reverse_order.each do |post| %>
         <div class="box post-content bottom-margin">
           <li><h2><%= link_to post.content, post_path(post.id) %></h2></li>

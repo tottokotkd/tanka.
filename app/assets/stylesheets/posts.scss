@@ -23,6 +23,7 @@
   background-color: #d4dcd6;
   letter-spacing: 3px;
   box-shadow: 0 0 0 3px #d4dcd6;
+  overflow: auto;
 }
 
 .post-content {
@@ -34,12 +35,14 @@
                  -1.5px 1.5px 0 #fff,
                  1.5px -1.5px 0 #fff,
                  -1.5px -1.5px 0 #fff;
+    white-space: pre-wrap;
   }
   a:hover{
-    padding: 1%;
-    text-decoration: none;
-    background-color: #f8fbf8;
-    border-radius: 5px;
+     padding: 1%;
+     font-size: 80%;
+     text-decoration: none;
+     background-color: #f8fbf8;
+     border-radius: 5px;
   }
 }
 
