@@ -1,20 +1,27 @@
 .mini-box{
   border: 1px solid black;
   border-radius: 7px;
-  margin-bottom: 20px;
+  margin-top: 4%;
   padding: 30px;
   word-break: break-all;
-  background-color: #d4dcd6;
+  background-color: rgba(212,220,214,0.9);
   letter-spacing: 3px;
+  p{
+    margin: 0;
+    font-size: calc(90% + 0.3vw);
+  }
+  ul{
+    padding: 0;
+  }
 }
 
-.mini-box .path{
+.path{
   text-shadow: 1px 1px 0 #fff,
               -1px 1px 0 #fff,
               1px -1px 0 #fff,
               -1px -1px 0 #fff;
   font-weight: bold;
-  margin: 0px 0px 25px 5px;
+  margin-bottom: 5%;
 }
 
 .path a:hover{
@@ -22,19 +29,33 @@
 }
 
 .mini-box h5{
-  margin: 5px;
-  margin-top: 10px;
-  font-size: 15px;  
+  font-size: 15px;
 }
 
-.comment-info p, .comment-edit-menu{
-  margin: 5px;
-  font-size: 12px;
-  text-align: right;
+.comment-form{
+  textarea{
+    height: 35px;
+    width: 100%;
+    font-size: calc(85% + 0.5vw);
+  }
+  #btn{
+    margin-left: 80%;
+    width: 20%;
+    background-color: white;
+  }
+  margin: 2% 0;
 }
 
-.comment-edit-menu p{
-  margin-right: 2%;
+.comment-info{
+  p{
+    font-size: calc(100% + 0.4vw);
+    margin: 0;
+  }
+  li{
+    margin: 0;
+    text-align: right;
+    font-size: calc(100% + 0.1vw);
+  }
 }
 
 // Place all the styles related to the comments controller here.

@@ -1,0 +1,15 @@
+<% @likes.each do |like| %>
+  <div class="box user-post col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+    <% post = Post.find_by(id: like.post_id) %>
+    <div class="post-content">
+      <h2><%= link_to post.content, post_path(post.id) %></h2>
+    </div>
+
+    <div class="post-info">
+      <ul>
+        <li><%= link_to post.user.name, user_path(post.user.id) %></li>
+        <li><%= simple_time(post.created_at) %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

@@ -1,6 +1,10 @@
-<div class="post">
-  <h3>作品を編集する</h3>
-  <p><%= link_to "←もどる", post_path(@post.id) %></p>
-  
-  <%= render "form" %>
-</div>
+<article class="row">
+  <div class="post">
+    <h3>作品を編集する</h3>
+    <p class="back col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
+      <%= link_to "←もどる", post_path(@post.id) %>
+    </p>
+
+    <%= render "form" %>
+  </div>
+</article>

@@ -2,17 +2,19 @@ class PostsController < ApplicationController
   before_action :set_post, only:[:edit, :edit_confirm, :destroy]
   before_action :authenticate_user
   before_action :ensure_correct_post, only: [:edit, :update]
-  
+
   def index
     @posts = Post.all.reverse_order
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+    @comment = current_user.comments.new
+    @like = current_user.likes.find_by(post_id: @post.id)
     @likes_count = @post.likes.count
   end
-  
+
   def new
     if params[:back]
       @post = current_user.posts.new(post_params)
@@ -20,7 +22,7 @@ class PostsController < ApplicationController
       @post = current_user.posts.new
     end
   end
-  
+
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
@@ -30,18 +32,18 @@ class PostsController < ApplicationController
       render "new"
     end
   end
-  
+
   def new_confirm
     @post = current_user.posts.new(post_params)
     render "new" if @post.invalid?
   end
-  
+
   def edit
     if params[:back]
       @post.attributes = post_params
     end
   end
-  
+
   def update
     if @post.update(post_params)
       flash[:notice] = "作品を編集しました \"#{@post.content.truncate(10)}\""
@@ -55,7 +57,7 @@ class PostsController < ApplicationController
     @post.attributes = post_params
     render "edit" if @post.invalid?
   end
-  
+
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
@@ -67,11 +69,11 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:content)
     end
-    
+
     def set_post
       @post = current_user.posts.find(params[:id])
     end
-    
+
     def ensure_correct_post
       @post = Post.find(params[:id])
       if @current_user.id != @post.user_id

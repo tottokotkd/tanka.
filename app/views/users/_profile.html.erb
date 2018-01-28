@@ -1,0 +1,15 @@
+<div class="box profile col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+    <p><b>お名前</b></p>
+    <p><%= @user.name %></p>
+    <p><b>自己紹介</b></p>
+    <% if @user.description.blank? %>
+      <p>まだ自己紹介がありません。</p>
+    <% else %>
+      <p><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></p>
+    <% end %>
+  <p class="path">
+    <% if @user.id == @current_user.id %>
+      <%= link_to "→編集", edit_user_path(@user.id) %>
+    <% end %>
+  </p>
+</div>

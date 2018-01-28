@@ -1,0 +1,99 @@
+.user h3 {
+  font-weight: bold;
+  color: #eaedf7;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
+.user ul {
+  padding: 0; }
+  .user ul li {
+    font-size: calc(100% + 0.1vw); }
+  .user ul li.path {
+    padding-left: 1%;
+    margin: 0; }
+  .user ul li.user-menu {
+    margin: 2% 0 1% 0; }
+.user p.path {
+  margin: 4% 0 0 2%; }
+.user .back {
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+  font-weight: bold;
+  margin: 1% 0%; }
+.user .box {
+  padding: 2.5%;
+  margin-top: 1%; }
+.user textarea {
+  font-size: calc(100% + 0.5);
+  margin-bottom: 1%;
+  height: 120px; }
+.user .user-post {
+  margin-bottom: 1%; }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.profile ul li {
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.profile-label {
+  font-weight: bold;
+  display: inline-block;
+  padding-top: 10px; }
+
+.simple_format {
+  text-decoration: none; }
+
+#user-menu-profile-btn {
+  display: none;
+  cursor: pointer; }
+  #user-menu-profile-btn:hover {
+    text-decoration: underline; }
+
+#user-menu-posts {
+  display: none; }
+
+#user-title-posts {
+  display: none; }
+
+#user-menu-posts-btn {
+  cursor: pointer; }
+  #user-menu-posts-btn:hover {
+    text-decoration: underline; }
+
+#user-menu-likes {
+  display: none; }
+
+#user-title-likes {
+  display: none; }
+
+#user-menu-likes-btn {
+  cursor: pointer; }
+  #user-menu-likes-btn:hover {
+    text-decoration: underline; }
+
+.profile-item {
+  padding-bottom: 60px; }
+  .profile-item ul li label {
+    text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
+  .profile-item ul li textarea {
+    font-size: 17px;
+    padding: 5px 10px;
+    height: 150px; }
+
+.profile-confirm li {
+  margin-top: 5px;
+  color: black; }
+
+# sourceMappingURL=users.css.map

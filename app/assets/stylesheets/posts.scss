@@ -1,36 +1,38 @@
 // Error共通設定
 .error_messages{
-  width: 70%;
   border: 1px solid black;
   border-radius: 7px;
-  margin: 25px 2%;
-  padding: 30px;
-  word-break: break-all;
-  background-color: #d4dcd6;
+  background-color: rgba(212,220,214,0.9);
+  box-shadow: 0 0 0 3px rgba(212,220,214,0.9);
+  margin-bottom: 5%;
+  padding: 2% 5%;
   letter-spacing: 3px;
-  box-shadow: 0 0 0 3px #d4dcd6;
+  text-align: center;
+  ul{
+   padding: 0;
+   li{
+   }
+  }
 }
-
 
 // post共通設定
 
 .box{
   border: 1px solid black;
   border-radius: 7px;
-  margin-bottom: 20px;
+  margin-top: 3%;
   padding: 30px;
-  word-break: break-all;
-  background-color: #d4dcd6;
+  background-color: rgba(212,220,214,0.9);
   letter-spacing: 3px;
-  box-shadow: 0 0 0 3px #d4dcd6;
-  overflow: auto;
+  box-shadow: 0 0 0 3px rgba(212,220,214,0.9);
+  overflow-wrap: break-word;
 }
 
 .post-content {
   h2{
     margin: 1%;
     padding-bottom: 5px;
-    font-size: 25px;
+    font-size: calc(90% + 1.2vw);
     text-shadow: 1.5px 1.5px 0 #fff,
                  -1.5px 1.5px 0 #fff,
                  1.5px -1.5px 0 #fff,
@@ -38,21 +40,33 @@
     white-space: pre-wrap;
   }
   a:hover{
-     padding: 1%;
-     font-size: 80%;
-     text-decoration: none;
-     background-color: #f8fbf8;
-     border-radius: 5px;
+    color: white;
+    text-shadow: 1.5px 1.5px 0 #000,
+                 -1.5px 1.5px 0 #000,
+                 1.5px -1.5px 0 #000,
+                 -1.5px -1.5px 0 #000;
+    text-decoration: none;
   }
+  p{
+    font-size: calc(1000% + 12vw);
+  }
+}
+
+.post-info{
+ li{
+  text-align: right;
+  margin-top: 0;
+  font-size: calc(90% + 0.3vw);
+ }
 }
 
 // 詳細画面
 .post-info p, .edit-menu{
- font-size: 15px;
  text-align: right;
 }
 
 .edit-menu p{
+  font-size: calc(90% + 0.3vw);
   margin-right: 2.5%;
 }
 
@@ -64,14 +78,26 @@
  color: #165e83;
 }
 
+#like-count{
+ cursor: pointer;
+ &:hover{
+ text-decoration: underline;
+ }
+}
+#like-users{
+ display: none;
+ p{
+  margin: 0;
+ }
+}
+
 .white-shadow p, .post p{
   text-shadow: 1px 1px 0 white,
                -1px 1px 0 white,
                1px -1px 0 white,
                -1px -1px 0 white;
   font-weight: bold;
-  margin-bottom: 25px;
-  margin-left: 3%;
+  margin-bottom: 5%;
 }
 
 .like_users ul li{
@@ -81,25 +107,28 @@
 // 投稿画面
 
 .post{
- margin-top: 10px;
+ h3{
+  font-weight: bold;
+  color: #eaedf7;
+  text-shadow: 1px 1px 0 #000,
+              -1px 1px 0 #000,
+              1px -1px 0 #000,
+              -1px -1px 0 #000;
+  margin-left: 15%;
+  margin-bottom: 2%;
+ }
+ textarea{
+  font-size: calc(100% + 0.5);
+  margin-bottom: 1%;
+  height: 120px;
+ }
+ p.back{
+  margin-bottom: 2%;
+ }
 }
 
-.post h3{
- font-weight: bold;
- color: #eaedf7;
- text-shadow: 1px 1px 0 #000,
-             -1px 1px 0 #000,
-             1px -1px 0 #000,
-             -1px -1px 0 #000;
- margin: 1.5%;
-}
-
-.post p{
- margin-bottom: 15px;
-}
-
-.post textarea{
- width: 100%;
+.confirm-box{
+ margin-top: 0;
 }
 
 .confirm-content p{
@@ -109,6 +138,13 @@
               -1.5px 1.5px 0 white,
               1.5px -1.5px 0 white,
               -1.5px -1.5px 0 white;
+}
+
+.submit-btn{
+ margin-top: 1%;
+}
+.back-btn{
+ margin-top: 1%;
 }
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.

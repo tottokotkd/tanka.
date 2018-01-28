@@ -1,30 +1,32 @@
-<%= form_with(model: @user, local: true) do |f| %>  
-    <div class="box">
+<article class="row">
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="box confirm-box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
       <ul>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>
         <%= f.hidden_field :password %>
         <%= f.hidden_field :password_confirmation %>
         <%= f.hidden_field :description %>
-        
-        <li class="profile-label">お名前</li>
+
+        <li><b>お名前</b></li>
         <li><%= @user.name %></li>
-      
-        <li class="profile-label">Email</li>
+
+        <li><b>Email</b></li>
         <li><%= @user.email %></li>
-      
-        <li class="profile-label">パスワード</li>
-        <li><%= "*" * @user.password.size %></li>
-      
-        <li class="profile-label">パスワード(確認)</li>
-        <li><%= "*" * @user.password_confirmation.size %></li>
-      <% if logged_in? %>        
-        <li class="profile-label">自己紹介</li>
+
+        <li><b>パスワード</b></li>
+        <li><%= "(secret.)" %></li>
+
+        <li><b>パスワード(確認)</b></li>
+        <li><%= "(secret.)" %></li>
+      <% if logged_in? %>
+        <li><b>自己紹介</b></li>
         <li><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></li>
       <% end %>
      </ul>
     </div>
     <ul>
-      <li class="right"><%= f.submit "登録する", id:"btn" %></li>
+      <div><%= f.submit "登録する", id:"btn", class:"submit-btn col-md-offset-8 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10" %></div>
     </ul>
-<% end %>
+  <% end %>
+</article>

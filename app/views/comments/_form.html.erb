@@ -1,19 +1,17 @@
-<%= form_with(model: @comment, local: true, url: comments_new_or_edit_path, method: post_or_patch) do |f| %>  
-  <% if @comment.errors.any? %>
-    <dl class="error_messages">
-      <dt><%= @comment.errors.count %>件のエラーがあります</dt>
-      <dd>
-        <% @comment.errors.full_messages.each do |error| %>
-        <ul>
-          <li><%= error %></li>
-        </ul>
-        <% end %>
-      </dd>
-    </dl>
-  <% end %>
+<%= form_with(model: [post, comment]) do |f| %>
+  <!--<% if comment.errors.any? %>-->
+  <!--  <div class="error_messages">-->
+  <!--    <p><%= comment.errors.count %>件のエラーがあります</p>-->
+  <!--    <ul>-->
+  <!--      <% comment.errors.full_messages.each do |error| %>-->
+  <!--        <li><%= error %></li>-->
+  <!--      <% end %>-->
+  <!--    </ul>-->
+  <!--  </div>-->
+  <!--<% end %>-->
 
-  <ul>
-    <li class="form"><%= f.text_area :content %></li>
-    <li class="right"><%= f.submit "投稿する", id:"btn" %></li>
-  <ul>
+  <div class="comment-form">
+    <%= f.text_area :content %>
+    <%= f.submit "投稿する", id:"btn" %>
+  </div>
 <% end %>

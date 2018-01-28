@@ -1,7 +1,7 @@
-<article class="row">
-  <div class="background ">
-    <div class="top-disc">
-      <% unless @user.errors.any? %>
+<% content_for :content do %>
+  <article class="row">
+    <div class="background">
+      <div class="top-disc">
         <p class="hide-p-320">
           Tanka is a classical Japanese poetry form<br>
           consisted of five units with the following pattern of on 5-7-5-7-7.
@@ -13,11 +13,9 @@
           ５・７・５・７・７のリズムに託してきました。
         </p>
         <h4 class="bottom-margin">Tanka.は、あなたの短歌作品を<span class="break"></span>自由に投稿できる新しいSNSです。</h4>
-      <% end %>
-      <h3 class="bottom-margin">新規登録</h3>
-      <div class="profile-item">
-        <%= render "form" %>
+        <%= yield %>
       </div>
     </div>
-  </div>
-</article>
+  </article>
+<% end %>
+<%= render template: 'layouts/application' %>

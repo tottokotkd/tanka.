@@ -1,48 +1,46 @@
-<%= form_with(model: @user, local: true, url: users_new_or_edit_confirm_path, method: post_or_patch) do |f| %>  
-  <% if @user.errors.any? %>
-    <div class="center">
-      <dl class="error_messages">
-        <dt><%= @user.errors.count %>件のエラーがあります</dt>
-        <dd>
-          <% @user.errors.full_messages.each do |error| %>
+  <%= form_with(model: @user, local: true, url: users_new_or_edit_confirm_path, method: post_or_patch) do |f| %>
+    <% if @user.errors.any? %>
+      <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+        <div class="error_messages">
           <ul>
-            <li><%= error %></li>
+            <li><%= @user.errors.count %>件のエラーがあります！</li>
+            <% @user.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
           </ul>
-          <% end %>
-        </dd>
-      </dl>
-    </div>
-  <% end %>
+        </div>
+      </div>
+    <% end %>
 
-  <div class="profile-item">
     <ul>
-      <li class="center">
-        <%= f.label :"お名前" %>
-        <%= f.text_field :name %>
+      <li class="row">
+        <%= f.label :"お名前", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+        <%= f.text_field :name, class:"col-md-4" %>
       </li>
-  
-      <li class="center">
-        <%= f.label :"Email" %>
-        <%= f.email_field :email %>
+
+      <li class="row">
+        <%= f.label :"Email", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+        <%= f.email_field :email, class:"col-md-4" %>
       </li>
-    
-      <li class="center">
-        <%= f.label :"パスワード", class:"password" %>
-        <%= f.password_field :password %>
+
+      <li class="row">
+        <%= f.label :"パスワード", class:"password col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+        <%= f.password_field :password, class:"password col-md-4" %>
       </li>
-    
-      <li class="center">
-        <%= f.label :"パスワード(確認)" %>
-        <%= f.password_field :password_confirmation %>
+
+      <li class="row">
+        <%= f.label :"パスワード(確認)", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+        <%= f.password_field :password_confirmation, class:"password col-md-4" %>
       </li>
-  
+
       <% if logged_in? %>
-        <li class="profile-desc"><%= f.label :"自己紹介" %></li>
-        <li class="center"><%= f.text_area :description %>
+        <li class="row profile-desc"><%= f.label :"自己紹介", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+          <%= f.text_area :description, class:"col-md-4" %>
         </li>
       <% end %>
-      
-      <li class="center bottom-margin"><%= f.submit "確認", id: "btn" %></li>
+
+      <li class="row bottom-margin"><%= f.submit "確認する", id: "btn", class:"col-md-offset-5 col-md-2" %></li>
     </ul>
 
-<% end %>
+  <% end %>
+</section>

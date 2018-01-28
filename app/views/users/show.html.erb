@@ -1,36 +1,53 @@
-<div class="post">
-  <h3>プロフィール</h3>
-  <p>
-    <% if @user.id == @current_user.id %>
-        <%= link_to "→編集", edit_user_path(@user.id) %>
-    <% end %>
-  </p>
+<article class="row">
+  <div class="user">
+    <h3 class="col-md-offset-2 col-md-8 col-md-offset-2 col-sm-offset-1 col-sm-10">
+      プロフィール
+    </h3>
 
-  <div class="center">
-    <div class="box profile">
-      <ul>
-        <li class="profile-label">お名前</li>
-        <li class="profile-content"><%= @user.name %></li>
-          <li class="profile-label">自己紹介</li>
-        <% if @user.description.blank? %>
-          <li class="profile-content">まだ自己紹介がありません。</li>
-        <% else %>
-          <li class="profile-content"><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></li> 
-        <% end %>
-        <li class="profile-label path"><p><%= link_to "→お気に入り作品へ", user_likes_path(@user.id) %></p></li>
-      </ul>
-    </div>
-  </div>
-  
-  <h3>投稿作品</h3>
-  <div class="center">
-    <ul class="profile col-md-12">
-      <% @user.posts.limit(5).reverse_order.each do |post| %>
-        <div class="box post-content bottom-margin">
-          <li><h2><%= link_to post.content, post_path(post.id) %></h2></li>
-        </div>
-      <% end %>
+    <ul class="col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-offset-2 col-xs-10">
+      <li class="path user-menu" id="user-menu-profile-btn">
+        → プロフィール
+      </li>
+      <li class="path user-menu" id="user-menu-posts-btn">
+        → 投稿作品
+      </li>
+      <li class="path user-menu" id="user-menu-likes-btn">
+        → お気に入り
+      </li>
     </ul>
+
+    <h3 id="user-title-posts" class="col-md-offset-2 col-md-8 col-md-offset-2 col-sm-offset-1 col-sm-10">
+      投稿作品
+    </h3>
+    <h3 id="user-title-likes" class="col-md-offset-2 col-md-8 col-md-offset-2 col-sm-offset-1 col-sm-10">
+      お気に入り
+    </h3>
+
+    <div id="user-menu-profile"><%= render 'profile' %></div>
+    <div id="user-menu-posts"><%= render 'posts' %></div>
+    <div id="user-menu-likes"><%= render 'likes' %></div>
   </div>
-  </div>
-</div>
+</article>
+
+<script>
+ $(function(){
+   $('#user-menu-posts-btn').on('click', function(){
+    $('#user-menu-posts-btn, #user-title-profile, #user-title-likes').hide();
+    $('#user-menu-profile, #user-menu-likes').hide();
+    $('#user-menu-profile-btn, #user-menu-likes-btn, #user-title-posts').show();
+    $('#user-menu-posts').show();
+   });
+   $('#user-menu-likes-btn').on('click', function(){
+    $('#user-menu-likes-btn, #user-title-profile, #user-title-posts').hide();
+    $('#user-menu-profile, #user-menu-posts').hide();
+    $('#user-menu-profile-btn, #user-menu-posts-btn, #user-title-likes').show();
+    $('#user-menu-likes').show();
+   });
+   $('#user-menu-profile-btn').on('click', function(){
+    $('#user-menu-profile-btn, #user-title-posts, #user-title-likes').hide();
+    $('#user-menu-posts, #user-menu-likes').hide();
+    $('#user-menu-likes-btn, #user-menu-posts-btn, #user-title-profile').show();
+    $('#user-menu-profile').show();
+   });
+ });
+</script>

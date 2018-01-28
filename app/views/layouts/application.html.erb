@@ -3,7 +3,7 @@
   <head>
     <title>Tanka.</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--font-awesomeの読み込み-->
@@ -11,39 +11,13 @@
   </head>
 
   <body>
-    <header>
-      <% if @current_user %>
-        <h1><%= link_to "Tanka.", posts_path %></h1>
-      <% else %>
-        <h1><%= link_to "Tanka.", root_path %></h1>
-      <% end %>
-      <nav>
-        <% if logged_in? %>
-          <p>
-            <%= link_to_unless_current "作品一覧", posts_path %> | 
-            <%= link_to_unless_current "新規投稿", new_post_path %> | 
-            <%= link_to_unless_current "お気に入り", user_likes_path(current_user.id) %> | 
-            <%= link_to_unless_current "プロフィール", user_path(current_user.id) %> | 
-            <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-          </p>
-        <% else %>
-          <p>
-            <%= link_to_unless_current "ログイン", new_session_path %> | 
-            <%= link_to_unless_current "新規登録", new_user_path %>
-          </p>
+    <%= render 'layouts/header' %>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="flash col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10"><%= content_tag(:div, value, class: "#{key}") %></div>
         <% end %>
-      </nav>
-    </header>
-            
-    <div class="row">
-      <article class="col-md-8">  
-        <div class="center">
-          <% flash.each do |key, value| %>
-            <div class="flash"><%= content_tag(:div, value, class: "#{key}") %></div>
-          <% end %>
-        </div>
-        <%= yield %>
-      </article>
-    </div>
+
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
   </body>
 </html>

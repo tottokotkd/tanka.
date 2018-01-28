@@ -1,0 +1,13 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+  <div class="comment-info">
+    <p><%= simple_format(comment.content) %></p>
+    <ul>
+      <li><%= link_to comment.user.name, user_path(comment.user.id) %></li>
+      <% if comment.user_id == @current_user.id %>
+        <li><%= link_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<% end %>

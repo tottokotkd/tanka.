@@ -1,5 +1,13 @@
-<div class="post">
-  <h3>プロフィールを編集する</h3>
-  <p><%= link_to "←もどる", user_path(@user.id) %></p>
-</div>    
-<%= render "form" %>
+<article class="row background">
+  <div class="user">
+    <h3 class="col-md-offset-1 col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10">
+      プロフィールを編集
+    </h3>
+    <p class="back col-md-offset-1 col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10">
+      <%= link_to "←もどる", user_path(@user.id) %>
+    </p>
+    <div class="profile-item col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+      <%= render "form" %>
+    </div>
+  </div>
+</article>

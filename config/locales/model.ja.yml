@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      post: "投稿"
+      user: "ユーザー"
+      like: "お気に入り"
+      comment: "コメント"
+    attributes:
+      post:
+        content: "内容"
+      user:
+        name: "お名前"
+        email: "Email"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+        description: "自己紹介"
+      comment:
+        content: "コメント"
+

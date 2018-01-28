@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_user, only:[:new, :create]
   
+  def new
+    render layout: 'top_page'
+  end
+  
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])

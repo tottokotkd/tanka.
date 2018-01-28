@@ -7,11 +7,11 @@ class UsersController < ApplicationController
   def new
     if params[:back]
       @user = User.new(user_params)
-    else  
+    else
       @user = User.new
     end
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -22,21 +22,22 @@ class UsersController < ApplicationController
       render "new"
     end
   end
-  
+
   def new_confirm
     @user = User.new(user_params)
-    render "new" if @user.invalid?
+    render  "new" if @user.invalid?
   end
-  
+
   def show
+    @likes = @user.likes
   end
-  
+
   def edit
     if params[:back]
-      @user.attributes = user_params 
+      @user.attributes = user_params
     end
   end
-  
+
   def update
     if @user = User.update(user_params)
       flash[:notice] = "ユーザー情報を編集しました"
@@ -47,19 +48,19 @@ class UsersController < ApplicationController
   end
 
   def edit_confirm
-    @user.attributes = user_params 
+    @user.attributes = user_params
     render "edit" if @user.invalid?
   end
-  
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :description, :image_name)
     end
-    
+
     def set_user
       @user = User.find(params[:id])
     end
-    
+
     def ensure_correct_user
       if @current_user.id != params[:id].to_i
         flash[:danger]="権限がありません"
