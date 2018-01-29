@@ -1,17 +1,18 @@
-<% if @post.like_user(current_user.id) %>
-  <%= link_to post_like_path(@like.id, post_id: @post.id), id: "like-btn", method: :delete, remote: true do %>
+<% if post.like_user(current_user.id) %>
+  <%= link_to post_like_path(post.like_user(current_user.id).id, post_id: post.id), id: "like-btn", method: :delete, remote: true do %>
     <span class="fa fa-heart like-btn"></span>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(post_id: @post.id), id: "like-btn", method: :post, remote: true do %>
+  <%= link_to post_likes_path(post_id: post.id), id: "like-btn", method: :post, remote: true do %>
     <span class="fa fa-heart like-btn-unlike"></span>
   <% end %>
 <% end %>
-<span id="like-count"><%= "#{@post.likes.count}人のお気に入り" if @post.likes.count > 0 %></span>
+
+<span id="like-count"><%= "#{post.likes.count}人のお気に入り" if post.likes.count > 0 %></span>
 
 <div id="like-users" class="like-box white-shadow">
   <p>お気に入り登録したユーザー</p>
-  <% @post.like_users.each do |like_user| %>
+  <% post.like_users.each do |like_user| %>
     <ul>
       <li>
         <%= link_to like_user.name, user_path(like_user.id) %>

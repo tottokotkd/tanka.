@@ -14,7 +14,8 @@
       </div>
 
       <div id="like_area" class="like-area col-md-offset-4 col-md-8 col-sm-offset-2 col-sm-10">
-        <p><%= render partial: 'likes/index', locals: {posts: @posts} %></p>
+        <p><%= render partial: 'likes/likes', locals: {post: post} %></p>
+        <% raise %>
       </div>
 
     </div>
