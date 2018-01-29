@@ -1,27 +1,75 @@
-<% if post.like_user(current_user.id) %>
-  <%= link_to post_like_path(post.like_user(current_user.id).id, post_id: post.id), id: "like-btn", method: :delete, remote: true do %>
-    <span class="fa fa-heart like-btn"></span>
-  <% end %>
-<% else %>
-  <%= link_to post_likes_path(post_id: post.id), id: "like-btn", method: :post, remote: true do %>
-    <span class="fa fa-heart like-btn-unlike"></span>
+<!-- indexのページだったらeach do を回す -->
+<% if action_name == "index" %>
+
+  <% posts.each do |post| %>
+    <div class="post-content">
+      <h2><%= link_to post.content, post_path(post.id) %></h2>
+    </div>
+
+    <div class="post-info">
+      <ul>
+        <li><%= link_to post.user.name, user_path(post.user.id) %></li>
+        <li><%= simple_time(post.created_at) %></li>
+      </ul>
+    </div>
+
+    <div id="like_area" class="like-area col-md-offset-4 col-md-8 col-sm-offset-2 col-sm-10">
+      <% if post.like_user(current_user.id) %>
+        <%= link_to post_like_path(post.like_user(current_user.id).id, post_id: post.id), id: "like-btn", method: :delete, remote: true do %>
+          <span class="fa fa-heart like-btn"></span>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(post_id: post.id), id: "like-btn", method: :post, remote: true do %>
+          <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+      <% end %>
+
+      <span id="like-count"><%= "#{post.likes.count}人のお気に入り" if post.likes.count > 0 %></span>
+
+      <div id="like-users" class="like-box white-shadow">
+        <p>お気に入り登録したユーザー</p>
+        <% post.like_users.each do |like_user| %>
+          <ul>
+            <li>
+              <%= link_to like_user.name, user_path(like_user.id) %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 <% end %>
+<!-- showのview -->
+<% if action_name == "show" %>
 
-<span id="like-count"><%= "#{post.likes.count}人のお気に入り" if post.likes.count > 0 %></span>
-
-<div id="like-users" class="like-box white-shadow">
-  <p>お気に入り登録したユーザー</p>
-  <% post.like_users.each do |like_user| %>
-    <ul>
-      <li>
-        <%= link_to like_user.name, user_path(like_user.id) %>
-      </li>
-    </ul>
-  <% end %>
-</div>
+  <div id="like_area" class="like-area col-md-offset-4 col-md-8 col-sm-offset-2 col-sm-10">
+    <% if post.like_user(current_user.id) %>
+      <%= link_to post_like_path(post.like_user(current_user.id).id, post_id: post.id), id: "like-btn", method: :delete, remote: true do %>
+        <span class="fa fa-heart like-btn"></span>
+      <% end %>
+    <% else %>
+      <%= link_to post_likes_path(post_id: post.id), id: "like-btn", method: :post, remote: true do %>
+        <span class="fa fa-heart like-btn-unlike"></span>
+      <% end %>
+    <% end %>
 
 
+    <span id="like-count"><%= "#{post.likes.count}人のお気に入り" if post.likes.count > 0 %></span>
+
+
+    <div id="like-users" class="like-box white-shadow">
+      <p>お気に入り登録したユーザー</p>
+      <% post.like_users.each do |like_user| %>
+        <ul>
+          <li>
+            <%= link_to like_user.name, user_path(like_user.id) %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
 
 <script>
  $(function(){
