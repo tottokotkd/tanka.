@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     post :new_confirm, on: :collection
     patch :edit_confirm, on: :member
     resources :comments, only:[:index, :create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
 
-  resources :likes, only: [:index, :create, :destroy]
 
   root :to => 'sessions#new'
 

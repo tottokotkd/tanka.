@@ -1,0 +1,37 @@
+
+  <% if @like.present? %>
+    <%= link_to post_like_path(post_id: post.id, id: @like.id), method: :delete, id: "like_btn", remote: true do %>
+      <span class="fa fa-heart like-btn"></span>
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post_id: post.id), method: :post, id: "like_btn", remote: true do %>
+      <span class="fa fa-heart like-btn-unlike"></span>
+    <% end %>
+  <% end %>
+  <span id="like-count"><%= "#{post.likes_count}人のお気に入り" if post.likes_count > 0 %> </span>
+
+
+
+  <div id="like-users" class="mini-box white-shadow col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
+    <p>お気に入り登録したユーザー</p>
+    <% post.like_users.each do |like_user| %>
+      <ul>
+        <li>
+          <b><%= link_to like_user.name, user_path(like_user.id) %></b>
+          <% unless like_user.description.blank? %>
+            <%= like_user.description.truncate(30) %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+
+
+
+<script>
+ $(function(){
+   $('#like-count').on('click', function(){
+     $('#like-users').slideToggle(400);
+   });
+ });
+</script>
