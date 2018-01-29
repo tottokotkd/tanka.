@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = current_user.comments.new
     @like = current_user.likes.find_by(post_id: @post.id)
-    @likes_count = @post.likes.count
   end
 
   def new
