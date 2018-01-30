@@ -1,15 +1,17 @@
-<div class="post">
-  <h3>以下の内容で登録しても良いですか？</h3>
-  
+<div class="user">
+  <h3 class="col-md-offset-1 col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10">
+    以下の内容で登録しても良いですか？
+  </h3>
+
   <%= render "confirm" %>
-  
-  <%= form_with(model: @user, local: true, url: new_user_path, method: :get) do |f| %>  
+
+  <%= form_with(model: @user, local: true, url: new_user_path, method: :get) do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :email %>
     <%= f.hidden_field :password %>
     <%= f.hidden_field :password_digest %>
-    <ul>
-      <li class="right bottom-margin"><%= f.submit :"もどる", name: "back", id: "btn" %></li>
-    </ul>
+    <div class="row bottom-margin">
+      <%= f.submit :"もどる", name: "back", id: "btn", class:"submit-btn col-md-offset-8 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10" %>
+    </div>
   <% end %>
 </div>

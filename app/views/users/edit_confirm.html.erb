@@ -4,6 +4,7 @@
   </h3>
 
   <%= render "confirm" %>
+
   <%= form_with(model: @user, local: true, url: edit_user_path(@current_user.id), method: :get) do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :email %>
