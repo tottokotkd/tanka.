@@ -10,8 +10,8 @@
           <li><%= simple_time(@post.created_at) %></li>
           <li>
             <!--いいね分岐-->
-            <div id="likes_area">
-              <%= render partial: 'likes/likes', locals: { post: @post} %>
+            <div id="likes_area_<%= @post.id %>" class="likes-area">
+              <%= render partial: 'likes/likes', locals: { post: @post } %>
             </div>
           </li>
         </ul>
@@ -26,7 +26,6 @@
         </div>
       <% end %>
   </div>
-
   <div class="mini-box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
     <p class="path">→ 感想を寄せる</p>
 

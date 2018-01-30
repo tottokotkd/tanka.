@@ -1,6 +1,6 @@
 
-  <% if @like.present? %>
-    <%= link_to post_like_path(post_id: post.id, id: @like.id), method: :delete, id: "like_btn", remote: true do %>
+  <% if Like.find_by(post_id: post.id, user_id: current_user.id) %>
+    <%= link_to post_like_path(post_id: post.id, id: current_user.likes.find_by(post_id: post.id).id), method: :delete, id: "like_btn", remote: true do %>
       <span class="fa fa-heart like-btn"></span>
     <% end %>
   <% else %>
@@ -8,30 +8,37 @@
       <span class="fa fa-heart like-btn-unlike"></span>
     <% end %>
   <% end %>
-  <span id="like-count"><%= "#{post.likes_count}人のお気に入り" if post.likes_count > 0 %> </span>
+  <span id="like_count_<%= post.id %>"><%= "#{post.likes.count}人のお気に入り" if post.likes.count > 0 %> </span>
 
-
-
-  <div id="like-users" class="mini-box white-shadow col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
+  <div id="like_users_<%= post.id %>" class="like-box white-shadow">
     <p>お気に入り登録したユーザー</p>
     <% post.like_users.each do |like_user| %>
       <ul>
         <li>
           <b><%= link_to like_user.name, user_path(like_user.id) %></b>
+          <span class="break"></span>
           <% unless like_user.description.blank? %>
-            <%= like_user.description.truncate(30) %>
+            <%= "#{like_user.description.truncate(25)}" %>
           <% end %>
         </li>
       </ul>
     <% end %>
   </div>
 
-
+<style>
+#like_users_<%= post.id %>{
+ display: none;
+ p{
+  margin: 0;
+ }
+}
+</style>
 
 <script>
  $(function(){
-   $('#like-count').on('click', function(){
-     $('#like-users').slideToggle(400);
+   $('#like_count_<%= post.id %>').on('click', function(){
+     $('#like_users_<%= post.id %>').slideToggle(400);
    });
  });
 </script>
+

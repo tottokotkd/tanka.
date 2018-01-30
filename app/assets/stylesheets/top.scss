@@ -325,6 +325,12 @@ header nav p{
   .back-btn{
    margin-top: 3%;
   }
+  .box{
+    padding: 15px 30px 15px 15px;
+  }
+  .like-box{
+    font-size: 110%;
+  }
 }
 
   //////// @media 375px  ////////////////////////////////
@@ -364,5 +370,8 @@ header nav p{
         display: none;
       }
     }
+  }
+  .like-box{
+    width: 110%;
   }
 }

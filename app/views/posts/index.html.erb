@@ -1,24 +1,24 @@
+
 <article class="row">
   <% @posts.each do |post| %>
-  <section class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 ">
-    <div class="box">
-      <div class="post-content">
-        <h2><%= link_to post.content, post_path(post.id) %></h2>
-      </div>
+    <section class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 ">
+      <div class="box">
+        <div class="post-content">
+          <h2><%= link_to post.content, post_path(post.id) %></h2>
+        </div>
 
-      <div class="post-info">
-        <ul>
-          <li><%= link_to post.user.name, user_path(post.user.id) %></li>
-          <li><%= simple_time(post.created_at) %></li>
-          <li>
-            <!--いいね分岐-->
-            <div id="likes_area">
-              <%= render partial: 'likes/likes', locals: { post: post } %>
-            </div>
-          </li>
-        </ul>
+        <div class="post-info">
+          <ul>
+            <li><%= link_to post.user.name, user_path(post.user.id) %></li>
+            <li><%= simple_time(post.created_at) %></li>
+            <li>
+              <div id="likes_area_<%= post.id %>" class="likes-area">
+                <%= render partial: 'likes/likes', locals:{ post: post } %>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   <% end %>
 </article>
