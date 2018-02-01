@@ -1,12 +1,23 @@
-<% @user.posts.reverse_order.each do |post| %>
-  <div class="box user-post col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
-    <div class="post-content">
-      <h2><%= link_to post.content, post_path(post.id) %></h2>
+<% if @user.posts.present? %>
+  <% @user.posts.reverse_order.each do |post| %>
+    <div class="box user-post col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+      <div class="post-content">
+        <h2><%= link_to post.content, post_path(post.id) %></h2>
+      </div>
+      <div class="post-info">
+        <ul>
+          <li><%= simple_time(post.created_at) %></li>
+          <li>
+            <div id="likes_area_<%= post.id %>" class="likes-area">
+              <%= render partial: 'likes/likes', locals:{ post: post } %>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="post-info">
-      <ul>
-        <li><%= simple_time(post.created_at) %></li>
-      </ul>
-    </div>
-  </div>
+  <% end %>
+<% else %>
+    <p class="yet path col-md-12 col-sm-12 col-xs-12">
+      まだ投稿はありません。
+    </p>
 <% end %>

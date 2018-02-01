@@ -5,14 +5,14 @@
     </h3>
 
     <ul class="col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-offset-2 col-xs-10">
-      <li class="path user-menu" id="user-menu-profile-btn">
-        → プロフィール
-      </li>
       <li class="path user-menu" id="user-menu-posts-btn">
         → 投稿作品
       </li>
       <li class="path user-menu" id="user-menu-likes-btn">
         → お気に入り
+      </li>
+      <li class="path user-menu" id="user-menu-profile-btn">
+        → プロフィールにもどる
       </li>
     </ul>
 
@@ -25,7 +25,9 @@
 
     <div id="user-menu-profile"><%= render 'profile' %></div>
     <div id="user-menu-posts"><%= render 'posts' %></div>
+
     <div id="user-menu-likes"><%= render 'likes' %></div>
+
   </div>
 </article>
 

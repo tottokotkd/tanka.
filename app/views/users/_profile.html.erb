@@ -3,7 +3,7 @@
     <p><%= @user.name %></p>
     <p><b>自己紹介</b></p>
     <% if @user.description.blank? %>
-      <p>まだ自己紹介がありません。</p>
+      <p>まだ自己紹介はありません。</p>
     <% else %>
       <p><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></p>
     <% end %>
