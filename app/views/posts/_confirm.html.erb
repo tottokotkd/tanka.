@@ -1,11 +1,19 @@
 <article class="row">
   <%= form_with(model: @post, local: true) do |f| %>
     <%= f.hidden_field :content %>
-      <div class="box confirm-box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
-        <div class="post-content">
-         <h2><%= @post.content %></h2>
-        </div>
+    <%= f.hidden_field :image %>
+    <%= f.hidden_field :image_cache %>
+    <%= f.hidden_field :remove_image %>
+
+    <div class="box confirm-box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+      <div class="post-content">
+       <div class="form-image">
+         <%= image_tag(@post.image.url) if @post.image.url.present? && @post.remove_image.nil? %>
+         <%= hidden_field_tag :"cache[image]", @post.image.cache_name %>
+       </div>
+       <h2><%= @post.content %></h2>
       </div>
-      <div><%= f.submit "投稿する", id: "btn", class:"submit-btn col-md-offset-8 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10" %></div>
+    </div>
+    <div><%= f.submit "投稿する", id: "btn", class:"submit-btn col-md-offset-8 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10" %></div>
   <% end %>
 </article>

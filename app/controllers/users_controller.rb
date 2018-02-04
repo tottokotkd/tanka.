@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :edit_confirm]
+  before_action :set_user, only: [:show, :edit, :edit_confirm, :update, :leaving, :destroy, :ensure_correct_user]
   before_action :authenticate_user, only: [:show, :edit, :update]
   before_action :forbid_login_user, only:[:new, :create]
   before_action :ensure_correct_user, only: [:edit, :update]
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "ユーザーを新規登録しました"
+      flash[:notice] = "Tanka.へようこそ！"
       redirect_to posts_path
     else
       render "new"
@@ -38,23 +38,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_confirm
+    @user.attributes = user_params
+    render "edit" if @user.invalid?
+  end
+
   def update
+    @user.attributes = user_params
+    @user.image.retrieve_from_cache!(params[:cache][:image]) if params[:cache][:image].present?
     if @user = User.update(user_params)
-      flash[:notice] = "ユーザー情報を編集しました"
+      flash[:notice] = "プロフィールを編集しました"
       redirect_to user_path(params[:id])
     else
       render "edit"
     end
   end
 
-  def edit_confirm
-    @user.attributes = user_params
-    render "edit" if @user.invalid?
+  def leaving
+  end
+
+  def destroy
+    @user.destroy
+    session.delete(:user_id)
+    flash[:notice] = "ユーザー情報を削除しました。\nご利用ありがとうございました。"
+    redirect_to new_session_path
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :description, :image_name)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :description, :image, :image_cache)
     end
 
     def set_user

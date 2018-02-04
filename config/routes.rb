@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, except:[:index, :destroy] do
+  resources :users, except:[:index] do
     post :new_confirm, on: :collection
     patch :edit_confirm, on: :member
+    get :leaving, on: :member
     resources :likes, only:[:index]
   end
 

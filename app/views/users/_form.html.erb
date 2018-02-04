@@ -1,41 +1,33 @@
-  <%= form_with(model: @user, local: true, url: users_new_or_edit_confirm_path, method: post_or_patch) do |f| %>
-    <% if @user.errors.any? %>
-      <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
-        <div class="error_messages">
-          <ul>
-            <li><%= @user.errors.count %>件のエラーがあります！</li>
-            <% @user.errors.full_messages.each do |error| %>
-              <li><%= error %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+<%= form_with(model: @user, local: true, url: users_new_or_edit_confirm_path) do |f| %>
+  <%= render partial: 'shared/errors', locals:{ obj: @user }%>
 
     <ul>
       <li class="row">
         <%= f.label :"お名前", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
         <%= f.text_field :name, class:"col-md-4" %>
       </li>
-
       <li class="row">
         <%= f.label :"Email", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
         <%= f.email_field :email, class:"col-md-4" %>
       </li>
-
       <li class="row">
         <%= f.label :"パスワード", class:"password col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
         <%= f.password_field :password, class:"password col-md-4" %>
       </li>
-
       <li class="row">
         <%= f.label :"パスワード(確認)", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
         <%= f.password_field :password_confirmation, class:"password col-md-4" %>
       </li>
-
       <% if logged_in? %>
         <li class="row profile-desc"><%= f.label :"自己紹介", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
           <%= f.text_area :description, class:"col-md-4" %>
+        </li>
+        <li class="row profile-desc"><%= f.label :"プロフィールアイコン", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+          <label for="file_photo" class="up col-md-2">
+              ＋写真を選択
+            <%= f.file_field :image, id:"file_photo", style:"display:none;" %>
+          </label>
+          <%= f.hidden_field :image_cache %>
         </li>
       <% end %>
 

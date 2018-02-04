@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    mount_uploader :image, ImageUploader
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     has_secure_password
     has_many :posts, dependent: :destroy
@@ -17,5 +18,10 @@ class User < ApplicationRecord
         length: { minimum: 6 },
         allow_nil: true
 
-    before_save {email.downcase!}
+    before_save :downcase_email
+
+    private
+      def downcase_email
+        self.email.downcase!
+      end
 end

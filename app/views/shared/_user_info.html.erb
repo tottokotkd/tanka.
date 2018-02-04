@@ -1,0 +1,8 @@
+<div class="index-image">
+  <% if user.image.present? %>
+    <%= link_to image_tag(user.image), user_path(user.id) %>
+  <% else %>
+    <%= link_to image_tag("default.png"), user_path(user.id)  %>
+  <% end %>
+  <%= link_to user.name, user_path(user.id) %>
+</div>

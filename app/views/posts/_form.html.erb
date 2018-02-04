@@ -1,19 +1,28 @@
-<%= form_with(model: @post, local: true, url: posts_new_or_edit_confirm_path, method: post_or_patch) do |f| %>
-  <% if @post.errors.any? %>
-    <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
-        <div class="error_messages">
-          <ul>
-            <li><%= @post.errors.count %>件のエラーがあります！</li>
-            <% @post.errors.full_messages.each do |error| %>
-              <li><%= error %></li>
-            <% end %>
-          </ul>
-      </div>
-    </div>
-  <% end %>
+<%= form_with(model: @post, local: true, url: posts_new_or_edit_confirm_path) do |f| %>
+  <%= render partial: 'shared/errors', locals:{ obj: @post }%>
 
   <div class="form row">
     <%= f.text_area :content, class:"col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10" %>
+    <div class="upload col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+      <label for="file_photo" class="up">
+        ＋写真を選択
+      <%= f.file_field :image, class:"up" %>
+      <%= f.hidden_field :image_cache %>
+      </label>
+    </div>
+    <br>
+
+    <% if @post.persisted? && @post.image? %>
+      <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+      <div class="remove col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+        <label class="up">
+           − 画像を削除
+        <br>
+        <%= f.check_box :remove_image %>
+        </label>
+      </div>
+    <% end %>
+
     <%= f.submit "確認する", id: 'btn', class:"col-md-offset-8 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-1 col-xs-10" %>
   </div>
 

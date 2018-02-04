@@ -4,12 +4,12 @@
     <section class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 ">
       <div class="box">
         <div class="post-content">
-          <h2><%= link_to post.content, post_path(post.id) %></h2>
+          <div class="post-image"><%= link_to image_tag(post.image), post_path(post) if post.image.present? %></div>
+          <h2><%= link_to post.content, post_path(post) %></h2>
         </div>
-
         <div class="post-info">
           <ul>
-            <li><%= link_to post.user.name, user_path(post.user.id) %></li>
+            <li><%= render partial: 'shared/user_info', locals: { user: post.user } %></li>
             <li><%= simple_time(post.created_at) %></li>
             <li>
               <div id="likes_area_<%= post.id %>" class="likes-area">

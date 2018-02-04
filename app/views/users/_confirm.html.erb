@@ -7,6 +7,8 @@
         <%= f.hidden_field :password %>
         <%= f.hidden_field :password_confirmation %>
         <%= f.hidden_field :description %>
+        <%= f.hidden_field :image %>
+        <%= f.hidden_field :image_cache %>
 
         <li><b>お名前</b></li>
         <li><%= @user.name %></li>
@@ -22,6 +24,9 @@
       <% if logged_in? %>
         <li><b>自己紹介</b></li>
         <li><%= @user.description.gsub(/\r\n|\r|\n/, "<br />").html_safe %></li>
+        <li><b>プロフィールアイコン</b></li>
+        <li class="profile-image"><%= image_tag @user.image.url %></li>
+        <%= hidden_field_tag :"cache[image]", @user.image.cache_name %>
       <% end %>
      </ul>
     </div>

@@ -1,0 +1,24 @@
+<article class="row">
+
+  <div class="user">
+    <h3 class="col-md-offset-2 col-md-8 col-md-offset-2 col-sm-offset-1 col-sm-10">
+      ユーザー情報を削除すると<br>
+      投稿した作品、<span class="break"></span>コメント、お気に入りが<span class="break"></span>
+      全て抹消されます。<br>
+      本当によろしいですか？
+    </h3>
+    <h3 class="col-md-offset-4 col-md-8 col-md-offset-2 col-sm-offset-1 col-sm-10">
+      <%= @user.name %>
+    </h3>
+    <div id="user-menu-profile"><%= render 'profile' %></div>
+  </div>
+  <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+    <div class="back-box">
+      <%= link_to "もどる", user_path(@user) %>
+    </div>
+    <div class="danger-sign">
+      DANGER!!<br>
+      <%= link_to "ユーザー情報を削除する", user_path(@user), method: :delete, data: {confirm: "本当によろしいですか？"} %>
+    </div>
+  </div>
+</article>

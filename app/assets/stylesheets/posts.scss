@@ -49,6 +49,15 @@
   }
 }
 
+.index-image img{
+ width: 32px;
+ height: 32px;
+ object-fit: cover;
+ border: 1px solid black;
+ border-radius: 7px;
+ background-color: rgba(255,255,255,0.7);
+}
+
 .post-info{
  li{
   text-align: right;
@@ -162,6 +171,47 @@
 .back-btn{
  margin-top: 1%;
 }
+
+.upload{
+ input{
+  background-color: #d4dcd6;
+ }
+ margin-bottom: 20px;
+}
+
+label.up{
+ color: white;
+ text-shadow: 1px 1px 0 #000,
+             -1px 1px 0 #000,
+             1px -1px 0 #000,
+             -1px -1px 0 #000;
+  margin: 0;
+ &:hover{
+  cursor: auto;
+  text-decoration: none;
+ }
+ input{
+  color: black;
+  font-weight: normal;
+ }
+}
+.remove{
+ input{
+  margin: 0;
+ }
+}
+
+.post-image{
+  text-align: center;
+  margin-bottom: 5%;
+}
+.post-image img{
+ width: 80%;
+ object-fit: cover;
+ border-radius: 7px;
+ border: 1px black solid;
+}
+
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/

@@ -1,6 +1,7 @@
 <article class-"row">
   <div class="box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
     <div class="post-content">
+      <div class="post-image"><%= image_tag @post.image if @post.image.present? %></div>
       <h2><%= @post.content %></h2>
     </div>
 
@@ -9,7 +10,7 @@
           <li><%= link_to @post.user.name, user_path(@post.user.id) %></li>
           <li><%= simple_time(@post.created_at) %></li>
           <li>
-            <!--いいね分岐-->
+            <!--いいね-->
             <div id="likes_area_<%= @post.id %>" class="likes-area">
               <%= render partial: 'likes/likes', locals: { post: @post } %>
             </div>

@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
 
+  mount_uploader :image, ImageUploader
+
   validates :content,
       presence: true,
       length:{ in: 1..140, allow_blank: true }
