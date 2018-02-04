@@ -14,7 +14,7 @@ body{
   font-family: YakuHanJPs, "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
   letter-spacing: 2px;
   word-break: break-all;
-  background: url(/images/books.jpg) center center / cover no-repeat fixed;
+  background: url(/images/books-compressed.jpg) center center / cover no-repeat fixed;
 }
 
 div.container{
@@ -366,7 +366,7 @@ header nav p{
    margin-top: 3%;
   }
   .box{
-    padding: 15px 30px 15px 15px;
+    padding: 15px;
   }
   .like-box{
     font-size: 110%;
