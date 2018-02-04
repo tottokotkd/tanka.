@@ -7,7 +7,7 @@
 
       <div class="post-info">
         <ul>
-          <li><%= link_to @post.user.name, user_path(@post.user.id) %></li>
+          <li><%= render partial: 'shared/user_info', locals: { user: @post.user } %></li>
           <li><%= simple_time(@post.created_at) %></li>
           <li>
             <!--いいね-->
