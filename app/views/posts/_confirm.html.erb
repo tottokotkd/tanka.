@@ -7,7 +7,7 @@
 
     <div class="box confirm-box col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
       <div class="post-content">
-       <div class="form-image">
+       <div class="post-image">
          <%= image_tag(@post.image.url) if @post.image.url.present? && @post.remove_image.nil? %>
          <%= hidden_field_tag :"cache[image]", @post.image.cache_name %>
        </div>

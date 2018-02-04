@@ -284,6 +284,9 @@ header nav p{
   .back-btn{
    margin-top: 2%;
   }
+  span .upload input{
+    margin-right: 0;
+  }
 }
 
 
@@ -411,4 +414,7 @@ header nav p{
   .like-box{
     width: 110%;
   }
+ .upload{
+   padding: 0;
+ }
 }

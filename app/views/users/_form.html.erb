@@ -22,16 +22,17 @@
         <li class="row profile-desc"><%= f.label :"自己紹介", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
           <%= f.text_area :description, class:"col-md-4" %>
         </li>
-        <li class="row profile-desc"><%= f.label :"プロフィールアイコン", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
-          <label for="file_photo" class="up col-md-2">
-              ＋写真を選択
-            <%= f.file_field :image, id:"file_photo", style:"display:none;" %>
-          </label>
-          <%= f.hidden_field :image_cache %>
+        <li class="row profile-desc"><%= f.label :"＋写真を選択", class:"col-md-offset-2 col-md-3 col-sm-12 col-xs-12" %>
+          <span class="upload">
+            <%= f.file_field :image, class:"col-md-4" %>
+            <%= f.hidden_field :image_cache %>
+          </span>
         </li>
       <% end %>
 
-      <li class="row bottom-margin"><%= f.submit "確認する", id: "btn", class:"col-md-offset-5 col-md-2" %></li>
+      <li class="row bottom-margin">
+        <%= f.submit "確認する", id: "btn", class:"col-md-offset-5 col-md-2" %>
+      </li>
     </ul>
 
   <% end %>
