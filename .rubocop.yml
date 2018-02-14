@@ -1,0 +1,13 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/schema.rb'
+    - 'test/fixtures/**/*'
+
+#　Rails向け設定を有効
+Rails:
+  Enabled: true
+
+# 日本語のコメントを許可
+Style/AsciiComments:
+  Enabled: false
